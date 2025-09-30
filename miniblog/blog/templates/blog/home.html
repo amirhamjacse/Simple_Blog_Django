@@ -2,17 +2,38 @@
 {% load static %}
 
 {% block content %}
-<div class="col-sm-10 ">
-    <h3 class="text-white my-5">Home page</h3>
-</div>
-{% for post in posts %}
-    <div class="jumbotron jumbotron-fluid jumbo-colo">
-        <div class="container">
-            <h1  class="display-4 font-weight-bold">{{post.title}}</h1>
-            <p style="text-align:justify" class="lead">{{post.desc}}</p>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <h2 class="text-center text-dark fw-bold mb-5">Home Page</h2>
+
+            {% for post in posts %}
+            <div class="bg-light p-4 mb-4 rounded shadow-sm">
+                <h1 class="display-5 fw-bold text-primary">{{ post.title }}</h1>
+                <p class="lead text-muted" style="text-align: justify;">
+                    {{ post.desc }}
+                </p>
+                <a href="{% url 'post_detail' post.pk %}" class="btn btn-outline-primary btn-sm">
+                    Read More
+                </a>
+                <div class="text-muted small mt-2">
+                    Published on {{ post.created_at|date:"F d, Y" }}
+                </div>
+            </div>
+            {% empty %}
+            <!-- Demo Hardcoded Posts -->
+            <div class="bg-light p-4 mb-4 rounded shadow-sm">
+                <h1 class="display-5 fw-bold text-primary">Demo Post Title</h1>
+                <p class="lead text-muted" style="text-align: justify;">
+                    This is a demo description of the blog post. You can replace it with real content.
+                </p>
+                <a href="#" class="btn btn-outline-primary btn-sm">Read More</a>
+                <div class="text-muted small mt-2">Published on September 30, 2025</div>
+            </div>
+            {% endfor %}
+
         </div>
     </div>
-{% endfor %}
-
-
+    
+</div>
 {% endblock content %}
