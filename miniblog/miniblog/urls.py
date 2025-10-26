@@ -16,13 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blog import views
- 
- 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomePage, name='homepage'),
     path('about/', views.AboutPage, name='aboutpage'),
-    
     path('dashboard/', views.DashboardPage, name='dashboardpage'),
     path('contact/', views.ContactPage, name='contactpage'),
     path('signup/', views.SignupPage, name='signuppage'),
